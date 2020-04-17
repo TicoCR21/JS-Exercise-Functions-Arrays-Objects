@@ -331,8 +331,12 @@ function getGermanCars( cars )
  *         (1) causes the odometer in the object to be increased by the distance,
  *         (2) returns the updated value of the `odometer`.
 */
-let carMaker = odometer => ( { odometer : odometer, drive: drive => odometer + drive } ); 
+// let carMaker = odometer => ( { odometer : odometer, drive: drive => 
+//                                                     {
+//                                                       odometer + drive } ); 
+//                                                     }    
 
+let carMaker = odometer => ( { odometer, drive : function( drive ) { this.odometer += drive; return this.odometer; } } );
 
 /// ////// END OF CHALLENGE /////////
 /// ////// END OF CHALLENGE /////////
