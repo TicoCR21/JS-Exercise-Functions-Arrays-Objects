@@ -12,7 +12,8 @@
  *
  * NOTE: This example has been completed for you.
 */
-function addNumbers(num1, num2) {
+function addNumbers( num1, num2 ) 
+{
   return num1 + num2;
 }
 
@@ -26,6 +27,7 @@ function addNumbers(num1, num2) {
 /**
  * ### Challenge `sayGoodbye`
  * 
+ * 
  * @instructions
  * This function should take an a name as an argument,
  * and return a string that says 'Goodbye, {name}. Have a great day.'
@@ -35,9 +37,8 @@ function addNumbers(num1, num2) {
  * the returned value should look like: 'Goodbye, Andy. Have a great day.'
  * 
 */
-function sayGoodbye(/* code here */) {
-  /* code here */
-}
+let sayGoodbye = name => `Goodbye, ${ name }. Have a great day.`;
+
 
 /**
  * ### Challenge `temperatureCtoF`
@@ -53,9 +54,7 @@ function sayGoodbye(/* code here */) {
  * Hint 1: The formula for converting celsius to fahrenheit is t*9/5 + 32 where t is the temperature in celsius.
  * Hint 2: There is a very easy way to round numbers in JS. Do a google search to find out how. 
 */
-function temperatureCtoF(/* code here */) {
-  /* code here */
-}
+let temperatureCtoF = temperature => Math.round( temperature * 9 / 5 + 32 );
 
 /**
  * ### Challenge `temperatureInF`
@@ -74,9 +73,7 @@ function temperatureCtoF(/* code here */) {
  * 
  * Hint: You can call your `temperatureCtoF` function from inside `temperatureInF`.
 */
-function temperatureInF(/* code here */) {
-  /* code here */
-}
+let temperatureInF = ( temperature, unit ) => unit === "F" ? `${ Math.round( temperature ) }F` : `${ temperatureCtoF( temperature ) }F`;
 
 
 /**
@@ -95,9 +92,7 @@ function temperatureInF(/* code here */) {
  *   email: "leia@leia.com",
  * }
 */
-function makePersonObject(/* code here */) {
-  /* code here */
-}
+let makePersonObject = ( id, name, email ) => ( { id, name, email } );
 
 /**
  * ### Challenge `getName`
@@ -110,11 +105,10 @@ function makePersonObject(/* code here */) {
  * 
  * For example, if we invoke `getName`
  * passing { id: 1, name: 'Leia', email: 'leia@leia.com` } as the argument,
- * the returned value should look like `Hello, my name is Leia`.
+ * the returned value should look like `Hello, my ndeame is Leia`.
 */
-function getName(/* code here */) {
-  /* code here */
-}
+
+let getName = person => `Hello, my name is ${ person.name }`;
 
 
 /**
@@ -132,9 +126,12 @@ function getName(/* code here */) {
  * passing in [ 'orange', 'grape', 'apple', 'banana', 'mango' ] as the argument,
  * the returned value should be: 2.
 */
-function appleIndex(/* code here */) {
-  /* code here */
-}
+let appleIndex = fruits => 
+{
+  for( let i = 0; i < fruits.length; i++ )
+    if( fruits[ i ] === "apple" )
+      return i;
+} 
 
 /**
  * ### Challenge `isItAnApple`
@@ -151,8 +148,13 @@ function appleIndex(/* code here */) {
  * passing in [ 'orange', 'apple', 'banana', 'apples', 'apple', 'mango' ] as the argument,
  * the returned value should be: [ false, true, false, false, true, false ].
 */
-function isItAnApple(/* code here */) {
-  /* code here */
+function isItAnApple( fruits ) 
+{
+  const f = new Array( fruits.length );
+  for( let i = 0; i < fruits.length; i++ )
+    f[ i ] = ( fruits[ i ] === 'apple' ? true : false );
+
+  return f;
 }
 
 
@@ -187,7 +189,8 @@ var inventory = [
   *
   * NOTE: This example has been completed for you.
 **/
-function get3rdCar(inventory) {
+function get3rdCar(inventory) 
+{
   const the3rd = inventory[2];
   return `The is a ${the3rd.car_make} ${the3rd.car_model}`
 }
@@ -209,9 +212,7 @@ function get3rdCar(inventory) {
  * For example, if getCarInfoByIndex is invoked with the inventory and the number 0,
  * it will return `This is a Lincoln Navigator`.
 */
-function getCarInfoByIndex(inventory, index) {
-  /* code here */
-}
+let getCarInfoByIndex = ( inventory, index ) => `This is a ${ inventory[ index ][ 'car_make' ] } ${ inventory[ index ][ 'car_model' ] }`; 
 
 /**
  * ### Challenge `getLastCarInfo`
@@ -224,9 +225,7 @@ function getCarInfoByIndex(inventory, index) {
  * For example, if getLastCarInfo is invoked passing the inventory inside /data/inventory.js,
  * it will return `This is a Lincoln Town Car`.
 */
-function getLastCarInfo(/* code here */) {
-  /* code here */
-}
+let getLastCarInfo = cars => `This is a ${ cars[ cars.length - 1 ][ 'car_make' ] } ${ cars[ cars.length - 1 ][ 'car_model' ] }`; 
 
 /**
  * ### Challenge `getModelYears`
@@ -237,8 +236,12 @@ function getLastCarInfo(/* code here */) {
  *     (1) an array which is an inventory of cars like the one inside /data/inventory.js.
  * getModelYears returns an array containing all the 'car_year's in the inventory.
 */
-function getModelYears(/* code here */) {
-  /* code here */
+function getModelYears( cars )
+{
+  let years = [];
+  for( let i in cars )
+    years.push( cars[ i ].car_year );
+  return years;
 }
 
 /**
@@ -255,8 +258,13 @@ function getModelYears(/* code here */) {
  * For example, if getCarInfoById is invoked with the inventory and the number 1,
  * it will return `This is a Lincoln Navigator`.
 */
-function getCarInfoById(/* code here */) {
-  /* code here */
+function getCarInfoById( cars, id ) 
+{
+  for( let i = 0; i < cars.length; i++ )
+  {
+    if( cars[ i ].id == id )
+      return `This is a ${ cars[ i ].car_make } ${ cars[ i ].car_model }`;
+  }
 }
 
 /**
@@ -273,8 +281,13 @@ function getCarInfoById(/* code here */) {
  * with a `car_year` which is at most the given desired max year,
  * in the same order as they appear in the original inventory.
 */
-function getOlderCars(/* code here */) {
-  /* code here */
+function getOlderCars( cars, year ) 
+{
+  let x = [];
+  for( let i = 0; i < cars.length; i++ )
+    if( cars[ i ].car_year <= year )
+      x.push( cars[ i ] );
+  return x;
 }
 
 /**
@@ -290,9 +303,20 @@ function getOlderCars(/* code here */) {
  * made by either `Audi` or `Mercedes-Benz` or `Volkswagen` or `BMW`,
  * in the same order as they appear in the original inventory.
 */
-function getGermanCars(/* code here */) {
-  /* code here */
+
+function getGermanCars( cars ) 
+{
+    let x = [];
+    for( let i = 0; i < cars.length; i++ )
+      if( cars[ i ].car_make === "Audi" ||
+          cars[ i ].car_make === "BMW" ||
+          cars[ i ].car_make === "Mercedes-Benz" ||
+          cars[ i ].car_make === "Volkswagen" )
+        x.push( cars[ i ] );
+      
+    return x;
 }
+
 
 /**
  * ### Challenge `carMaker`
@@ -307,9 +331,12 @@ function getGermanCars(/* code here */) {
  *         (1) causes the odometer in the object to be increased by the distance,
  *         (2) returns the updated value of the `odometer`.
 */
-function carMaker(/* code here */) {
-  /* code here */
-}
+// let carMaker = odometer => ( { odometer : odometer, drive: drive => 
+//                                                     {
+//                                                       odometer + drive } ); 
+//                                                     }    
+
+let carMaker = odometer => ( { odometer, drive : function( drive ) { this.odometer += drive; return this.odometer; } } );
 
 /// ////// END OF CHALLENGE /////////
 /// ////// END OF CHALLENGE /////////
